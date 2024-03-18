@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Chatbot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous" />
+    <link rel="stylesheet" href="custom.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .chat-container {
+            width: 300px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        .user-msg, .bot-msg {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin: 5px 0;
+            padding: 10px;
+        }
+        .user-msg {
+            text-align: right;
+        }
+      
+  
+    </style>
+</head>
+<body>
+    <body>
+        <div class="my-bg-photo bg-secondary text-white py-5 text-center shadow">
+          <h1 class="display-4">My Portfolio</h1>
+          <p class="lead mb-0">A compilation of work and projects.</p>
+        </div>
+    
+
+<div class="chat-container">
+    <div class="chat-box" id="chat-box">
+        <div class="bot-msg">Hey there! Want to hear a joke?</div>
+    </div>
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    function sendMessage() {
+        var userInput = document.getElementById("user-input").value;
+        if (userInput !== "") {
+            addUserMessage(userInput);
+            getBotResponse(userInput);
+            document.getElementById("user-input").value = "";
+        }
+    }
+
+    function addUserMessage(message) {
+        var chatBox = document.getElementById("chat-box");
+        var userMsgElement = document.createElement("div");
+        userMsgElement.className = "user-msg";
+        userMsgElement.innerText = message;
+        chatBox.appendChild(userMsgElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function addBotMessage(message) {
+        var chatBox = document.getElementById("chat-box");
+        var botMsgElement = document.createElement("div");
+        botMsgElement.className = "bot-msg";
+        botMsgElement.innerText = message;
+        chatBox.appendChild(botMsgElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function getBotResponse(userInput) {
+        // Generate funny responses based on user input
+        var funnyResponses = [
+            "Why don't scientists trust atoms? Because they make up everything!",
+            "Parallel lines have so much in common. It's a shame they'll never meet.",
+            "Why did the scarecrow win an award? Because he was outstanding in his field!",
+            "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+            "What do you call fake spaghetti? An impasta!",
+            "Why did the bicycle fall over? Because it was two-tired!",
+            "Why don't skeletons fight each other? They don't have the guts!",
+            "What did one hat say to the other? You stay here, I'll go on ahead!",
+            "Did you hear about the mathematician who’s afraid of negative numbers? He’ll stop at nothing to avoid them!",
+            "I'm reading a book on anti-gravity. It's impossible to put down!",
+        ];
+        // Randomly select a funny response
+        var randomIndex = Math.floor(Math.random() * funnyResponses.length);
+        var botResponse = funnyResponses[randomIndex];
+        addBotMessage(botResponse);
+    }
+</script>
+
+
+<footer class="border-top mt-5 py-4 text-center text-muted small">
+  
+    <a href="index.html" class="btn btn-primary btn-lg">Home</a>
+    <p>&copy; 2024 My Site</p>
+  </footer>
+</body>
+</html>
